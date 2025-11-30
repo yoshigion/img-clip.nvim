@@ -14,6 +14,10 @@ M.get_clip_cmd = function()
   elseif (util.has("win32") or util.has("wsl")) and util.executable("powershell.exe") then
     M.clip_cmd = "powershell.exe"
 
+  -- WSL and win32yank.exe
+  elseif util.has("wsl") and util.executable("win32yank.exe") then
+    M.clip_cmd = "win32yank.exe"
+
   -- MacOS
   elseif util.has("mac") then
     if util.executable("pngpaste") then
@@ -52,6 +56,11 @@ M.content_is_image = function()
   elseif cmd == "pngpaste" then
     local _, exit_code = util.execute("pngpaste -")
     return exit_code == 0
+
+  -- WSL and win32yank.exe
+  elseif cmd == "win32yank" then
+    local output = util.execute("win32yank.exe -o")
+    return output ~= nil and output:find("image/png") ~= nil
 
   -- Windows
   elseif cmd == "powershell.exe" then
