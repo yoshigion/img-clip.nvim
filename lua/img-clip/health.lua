@@ -41,6 +41,14 @@ M.check = function()
       error("`powershell.exe` is not installed")
     end
 
+  -- WSL and win32yank.exe
+  elseif util.has("wsl") then
+    if util.executable("win32yank.exe") then
+      ok("`win32yank.exe` is installed")
+    else
+      error("`win32yank.exe` is not installed")
+    end
+
   -- Other OS
   else
     error("Operating system is not supported")

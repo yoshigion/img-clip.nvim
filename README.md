@@ -115,7 +115,7 @@ The plugin is highly configurable. Please refer to the default configuration bel
     process_cmd = "", ---@type string | fun(): string
     copy_images = false, ---@type boolean | fun(): boolean
     download_images = true, ---@type boolean | fun(): boolean
-    formats = { "jpeg", "jpg", "png" }, ---@type string[]
+    formats = { "jpeg", "jpg", "png", "svg" }, ---@type string[]
 
     -- drag and drop options
     drag_and_drop = {
@@ -153,7 +153,7 @@ The plugin is highly configurable. Please refer to the default configuration bel
 \end{figure}
     ]], ---@type string | fun(context: table): string
 
-      formats = { "jpeg", "jpg", "png", "pdf" }, ---@type table
+      formats = { "jpeg", "jpg", "png", "svg", "pdf" }, ---@type table
     },
 
     typst = {
@@ -617,7 +617,7 @@ The plugin can be integrated with [Snacks.nvim picker](https://github.com/folke/
 ```lua
 function()
     Snacks.picker.files {
-    	ft = { "jpg", "jpeg", "png", "webp" },
+    	ft = { "jpg", "jpeg", "png", "svg", "webp" },
     	confirm = function(self, item, _)
     	    self:close()
     	    require("img-clip").paste_image({}, "./" .. item.file) -- ./ is necessary for img-clip to recognize it as path

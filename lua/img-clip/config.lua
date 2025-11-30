@@ -40,7 +40,7 @@ local defaults = {
     process_cmd = "", ---@type string
     copy_images = false, ---@type boolean
     download_images = true, ---@type boolean
-    formats = { "jpeg", "jpg", "png" }, ---@type string[]
+    formats = { "jpeg", "jpg", "png", "svg" }, ---@type string[]
 
     -- drag and drop options
     drag_and_drop = {
@@ -78,7 +78,7 @@ local defaults = {
 \end{figure}
     ]], ---@type string
 
-      formats = { "jpeg", "jpg", "png", "pdf" }, ---@type table
+      formats = { "jpeg", "jpg", "png", "svg", "pdf" }, ---@type table
     },
 
     typst = {
